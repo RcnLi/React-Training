@@ -1,0 +1,16 @@
+.Button1 {
+
+    background-color: red;
+    color: white;
+    margin: 20px;
+    padding: 2%;
+    border-radius: 10px;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: background-color 1.3s ease, transform 1.2s ease ;
+}
+
+.Button1:hover{
+    transform: scale(1.05);
+    background-color: #b62828;
+}
