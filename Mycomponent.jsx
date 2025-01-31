@@ -8,7 +8,7 @@ function mycomponent(){
 
     let [age, setAge] = useState(0);
 
-    let [isEmployed, setEmployed] = useState(false);
+    const [isEmployed, setEmployed] = useState(false);
 
     const updateName = () => { 
         setName("Rucen");
@@ -32,7 +32,7 @@ function mycomponent(){
         <div>
             <p>Name: {name}</p>
             <p>Age: {age}</p>
-            <p>employed: {isEmployed}</p>
+            <p>employed: {isEmployed ? "Yes" : "No"}</p>
         </div>
 
         <div className='flex-col justify-center items-center'>
