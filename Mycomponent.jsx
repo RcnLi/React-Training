@@ -1,51 +1,42 @@
 import React, {useState} from 'react'
 
 
-function bestGame(){
+function array(){
 
-    const [game, setGame] = useState({Name: "Valorant", Genre: "FPS", Year: 2021 ,})
+const [games, setGames] = useState(["Valorant","Genshin","Sims"]);
 
-    function nameChanger(event){
-        setGame({...game, Name: event.target.value})
-    }
-    function genreChanger(event){
-        setGame({...game, Genre: event.target.value})
-    }
-    function yearChanger(event){
-        setGame({...game, Year: event.target.value})
-    }
-return(
+function addGame(){
 
+    const newGames = document.getElementById("gameInput").value;
+    document.getElementById("gameInput").value="";
 
-    <div className='ml-10 mt-10'>
-        <p className="text-center">BEST GAME OF THE YEAR</p>
-        <div className='flex flex-row text-center items-center justify-center mt-10'>
-            <p className="text-center">{game.Name}</p>
-            <p className="text-center ml-10 mr-10">{game.Genre}</p>
-            <p className="text-center">{game.Year}</p>
-        </div>
-    
-        <div className='flex flex-row ' value={game.Name} onChange={nameChanger}> 
-            <p>Name: </p>
-            <input  className='border border-black' type="text" />
-        </div>
-        <div className='flex flex-row ' value={game.Genre} onChange={genreChanger}> 
-            <p>Genre: </p>
-            <input  className='border border-black' type="text" />
-        </div>
-        <div className='flex flex-row ' value={game.Year} onChange={yearChanger}> 
-            <p>Year: </p>
-            <input className='border border-black'type="number" value={game.Year}/>
-        </div>
-
-
-    </div>
-)
-
-
-
+    setGames(g => [...g, newGames]);
 
 
 }
 
-export default bestGame
+function deleteGame(index){
+
+    setGames(games.filter((_,i) => i !== index))
+
+}
+
+return(
+    <div className='ml-10'>
+        <p className="text-5xl text-center">List of Games</p>
+
+        <ul className='text-center mt-10'>
+            {games.map((game, index) => <li key={index} onClick={() => deleteGame(index)}> {game}</li>)}
+        </ul>
+        
+        <div className='flex flex-row items-center justify-center mt-10'>
+         <input className="border border-blue-600" id="gameInput" placeholder="Enter a game" type="text"></input>
+         <button className="border border-black ml-5" onClick={addGame}>Add game</button>
+        </div>
+        
+    </div>
+);
+
+}
+
+export default array
