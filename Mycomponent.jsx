@@ -1,42 +1,64 @@
+
 import React, {useState} from 'react'
 
+function listGames(){
 
-function array(){
+const [games, setCar] = useState([])
+const [yearGames, setYear] = useState(new Date().getFullYear());
+const [genreGames, SetGenre] = useState("");
+const [nameGames, SetName] = useState("");
 
-const [games, setGames] = useState(["Valorant","Genshin","Sims"]);
+function addGames(){
 
-function addGame(){
+    const listg = {Year: yearGames, Genre: genreGames, Name: nameGames};
+    setCar (g => [...g, listg]);
 
-    const newGames = document.getElementById("gameInput").value;
-    document.getElementById("gameInput").value="";
+}
 
-    setGames(g => [...g, newGames]);
+function removeGames(index){
 
 
 }
 
-function deleteGame(index){
-
-    setGames(games.filter((_,i) => i !== index))
-
+function addYear(event){
+    setYear(event.target.value)
 }
+
+function addGenre(event){
+    SetGenre(event.target.value)
+}
+function addName(event){
+    SetName(event.target.value)
+}
+
 
 return(
-    <div className='ml-10'>
-        <p className="text-5xl text-center">List of Games</p>
 
-        <ul className='text-center mt-10'>
-            {games.map((game, index) => <li key={index} onClick={() => deleteGame(index)}> {game}</li>)}
+    <div>
+        <p>List of Games</p>
+
+        <ul>
+            {games.map((game,index) => <li key={index}>{game.yearGames} {game.genreGames} {game.nameGames}</li>)}
         </ul>
-        
-        <div className='flex flex-row items-center justify-center mt-10'>
-         <input className="border border-blue-600" id="gameInput" placeholder="Enter a game" type="text"></input>
-         <button className="border border-black ml-5" onClick={addGame}>Add game</button>
+
+
+
+        <div className='flex flex-col items-center justify-center'>
+            <input className='border border-black mt-20' type='number' value={yearGames} onChange={addYear}/>
+            <input className='border border-black mb-5 mt-5' type='text' value={genreGames} onChange={addGenre}/>
+            <input className='border border-black' type='text' value={nameGames}  onChange={addName}/>
+            <button onClick={addGames}></button>
         </div>
+       
         
+        
+        
+        <button onClick={addGames}>Add games</button>
     </div>
-);
+)
+
+
 
 }
 
-export default array
+export default listGames
