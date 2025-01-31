@@ -1,11 +1,11 @@
 
 
 
-import UseHook from "./usehook.jsx";
+import MyComponent from "./Mycomponent.jsx";
 
 function App() {
   return (
-    <UseHook />
+    <MyComponent />
   );
 }
 
